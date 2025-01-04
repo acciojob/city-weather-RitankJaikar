@@ -11,9 +11,9 @@ function App() {
       return;
     }
 
-    setQuery('');
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`)
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('City not found');
@@ -47,16 +47,14 @@ function App() {
         />
         <button onClick={fetchWeather}>Search</button>
       </div>
-      <div className="weather">
-        {weather && (
-          <div className="weather">
-            <h2 className='city'>{weather.city}</h2>
-            <p className='temperature'>Temperature: {weather.temperature}°C</p>
-            <p className='description'>Condition: {weather.description}</p>
-            <img src={weather.icon} alt="Weather Icon" className='icon'/>
-          </div>
-        )}
-      </div>
+      {weather && (
+        <div className="weather">
+          <h2 className="city">{weather.city}</h2>
+          <p className="temperature">Temperature: {weather.temperature}°C</p>
+          <p className="description">Condition: {weather.description}</p>
+          <img src={weather.icon} alt="Weather Icon" className="icon" />
+        </div>
+      )}
     </div>
   );
 }
