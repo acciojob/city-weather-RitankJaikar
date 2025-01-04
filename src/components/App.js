@@ -47,14 +47,16 @@ function App() {
         />
         <button onClick={fetchWeather}>Search</button>
       </div>
-      {weather && (
-        <div className="weather">
-          <h2 className='city'>{weather.city}</h2>
-          <p className='temperature'>Temperature: {weather.temperature}°C</p>
-          <p className='description'>Condition: {weather.description}</p>
-          <img src={weather.icon} alt="Weather Icon" className='icon'/>
-        </div>
-      )}
+      <div className="weather">
+        {weather && (
+          <div className="weather">
+            <h2 className='city'>{weather.city}</h2>
+            <p className='temperature'>Temperature: {weather.temperature}°C</p>
+            <p className='description'>Condition: {weather.description}</p>
+            <img src={weather.icon} alt="Weather Icon" className='icon'/>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
