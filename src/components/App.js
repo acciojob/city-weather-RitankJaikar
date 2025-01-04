@@ -11,6 +11,8 @@ function App() {
       return;
     }
 
+    setQuery('');
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`)
       .then((response) => {
         if (!response.ok) {
@@ -47,7 +49,7 @@ function App() {
       </div>
       {weather && (
         <div className="weather">
-          <h2 className='weather'>{weather.city}</h2>
+          <h2 className='city'>{weather.city}</h2>
           <p className='temperature'>Temperature: {weather.temperature}°C</p>
           <p className='description'>Condition: {weather.description}</p>
           <img src={weather.icon} alt="Weather Icon" className='icon'/>
