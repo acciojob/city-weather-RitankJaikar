@@ -47,7 +47,7 @@ function App() {
       </div>
       {weather && (
         <div className="weather">
-          <h2>{weather.city}</h2>
+          <h2 className='weather'>{weather.city}</h2>
           <p>Temperature: {weather.temperature}°C</p>
           <p>Condition: {weather.description}</p>
           <img src={weather.icon} alt="Weather Icon" />
