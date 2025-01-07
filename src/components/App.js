@@ -5,7 +5,10 @@ function App() {
   const [weather, setWeather] = useState(null);
   const API_KEY = 'fa8b6b96a01db77ae3d253c0e1c9b50a';
 
-  const fetchWeather = () => {
+  const fetchWeather = (e) => {
+    e.preventDefault();
+    // setQuery('');
+
     if (!query) {
       alert('Please enter a city name.');
       return;
@@ -30,14 +33,14 @@ function App() {
         setQuery(''); // Clear the input field
       })
       .catch((error) => {
-        alert(error.message);
+        // alert(error.message);
       });
   };
 
   return (
     <div className="App">
       <h1>City Weather App</h1>
-      <div className="form">
+      <form className="form" onSubmit={fetchWeather}>
         <input
           className="search"
           type="text"
@@ -45,16 +48,19 @@ function App() {
           placeholder="Enter city name"
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button onClick={fetchWeather}>Search</button>
+        <button>Search</button>
+      </form>
+      <div className="weather">
+        {weather && (
+          <div>
+            <h1>Weather info</h1>
+            <h2 className="city">{weather.city}</h2>
+            <p className="temperature">Temperature: {weather.temperature}°C</p>
+            <p className="description">Condition: {weather.description}</p>
+            <img src={weather.icon} alt="Weather Icon" className="icon" />
+          </div>
+        )}
       </div>
-      {weather && (
-        <div className="weather">
-          <h2 className="city">{weather.city}</h2>
-          <p className="temperature">Temperature: {weather.temperature}°C</p>
-          <p className="description">Condition: {weather.description}</p>
-          <img src={weather.icon} alt="Weather Icon" className="icon" />
-        </div>
-      )}
     </div>
   );
 }
